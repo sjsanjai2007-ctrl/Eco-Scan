@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoScan – Smart Waste Sorting App</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS (Animate On Scroll) Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #104C3C 0%, #208060 100%);
+    }
+    .sticky-nav {
+      background-color: rgba(16, 76, 60, 0.95);
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- 🌿 Navbar -->
+  <header class="fixed top-0 left-0 w-full z-50 shadow-md sticky-nav text-white">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+      <h1 class="text-2xl font-bold">EcoScan</h1>
+      <nav class="space-x-6 font-medium hidden md:block">
+        <a href="#about" class="hover:text-green-200 transition">About</a>
+        <a href="#features" class="hover:text-green-200 transition">Features</a>
+        <a href="#demo" class="hover:text-green-200 transition">Demo</a>
+        <a href="#sdg" class="hover:text-green-200 transition">SDG</a>
+        <a href="#contact" class="hover:text-green-200 transition">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 🌱 Hero Section -->
+  <section class="hero-gradient text-white py-28 px-6 text-center mt-16">
+    <h1 data-aos="fade-up" class="text-5xl font-extrabold mb-4">EcoScan</h1>
+    <p data-aos="fade-up" data-aos-delay="200" class="text-xl mb-6">Scan. Classify. Dispose Right.</p>
+    <a href="#about" data-aos="zoom-in" data-aos-delay="400"
+      class="bg-white text-green-800 px-6 py-3 rounded-lg font-semibold text-lg hover:bg-green-100 transition">
+      Learn More
+    </a>
+  </section>
+
+  <!-- 💡 About Section -->
+  <section id="about" class="py-20 px-6 max-w-5xl mx-auto text-center">
+    <h2 data-aos="fade-down" class="text-3xl font-bold mb-6 text-green-700">About EcoScan</h2>
+    <p data-aos="fade-up" class="text-lg leading-relaxed text-gray-700 max-w-3xl mx-auto">
+      EcoScan is a smart waste-sorting web and mobile app that helps users identify recyclable, biodegradable, and non-recyclable materials simply by scanning an image. 
+      It uses AI-based classification to guide people towards proper waste disposal — promoting sustainability and eco-awareness.
+    </p>
+  </section>
+
+  <!-- ⚙️ Features Section -->
+  <section id="features" class="bg-green-50 py-20 px-6">
+    <h2 data-aos="fade-down" class="text-3xl font-bold text-center mb-12 text-green-800">Key Features</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 max-w-6xl mx-auto text-center">
+      <div data-aos="zoom-in" class="p-6 bg-white shadow-lg rounded-xl">
+        <img src="https://cdn-icons-png.flaticon.com/512/992/992651.png" class="w-14 mx-auto mb-4" />
+        <h3 class="text-xl font-semibold mb-2">AI Waste Detection</h3>
+        <p>Instantly classifies waste as recyclable, biodegradable, or non-recyclable.</p>
+      </div>
+      <div data-aos="zoom-in" data-aos-delay="100" class="p-6 bg-white shadow-lg rounded-xl">
+        <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" class="w-14 mx-auto mb-4" />
+        <h3 class="text-xl font-semibold mb-2">Eco Tips</h3>
+        <p>Provides smart disposal and recycling tips for each item scanned.</p>
+      </div>
+      <div data-aos="zoom-in" data-aos-delay="200" class="p-6 bg-white shadow-lg rounded-xl">
+        <img src="https://cdn-icons-png.flaticon.com/512/3176/3176366.png" class="w-14 mx-auto mb-4" />
+        <h3 class="text-xl font-semibold mb-2">Sustainability Focused</h3>
+        <p>Aligned with UN SDG 12 & 13 for responsible consumption and climate action.</p>
+      </div>
+      <div data-aos="zoom-in" data-aos-delay="300" class="p-6 bg-white shadow-lg rounded-xl">
+        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920295.png" class="w-14 mx-auto mb-4" />
+        <h3 class="text-xl font-semibold mb-2">Gamified Rewards</h3>
+        <p>Encourages eco-friendly behavior with reward points for correct segregation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📱 Demo Section -->
+<section id="demo" class="py-20 px-6 text-center">
+  <h2 data-aos="fade-up" class="text-3xl font-bold text-green-700 mb-8">App Demo</h2>
+
+  <div data-aos="zoom-in" class="max-w-sm mx-auto border-8 border-gray-700 rounded-3xl overflow-hidden shadow-2xl aspect-[9/16] bg-white relative">
+    <!-- Demo Scenes -->
+    <div id="ecoscan-demo" class="relative w-full h-full overflow-hidden rounded-2xl">
+      <!-- Scene 1 -->
+      <div id="scene-1" class="absolute inset-0 flex flex-col justify-center items-center bg-[#104C3C] text-white opacity-0 transition-all duration-1000">
+        <h2 class="text-4xl font-extrabold mb-4">Eco<span class="font-light">Scan</span></h2>
+        <p class="text-lg">Scan. Classify. Dispose Right.</p>
+      </div>
+
+      <!-- Scene 2 -->
+      <div id="scene-2" class="absolute inset-0 flex flex-col justify-center items-center bg-[#F3F5F3] text-[#104C3C] opacity-0 transition-all duration-1000">
+        <h3 class="text-2xl font-bold mb-6">Welcome!</h3>
+        <div class="bg-[#104C3C] text-white w-40 h-40 rounded-full flex items-center justify-center text-xl font-bold mb-6">
+          Start Scanning
+        </div>
+        <p>Scan any waste item with one tap.</p>
+      </div>
+
+      <!-- Scene 3 -->
+      <div id="scene-3" class="absolute inset-0 flex flex-col justify-center items-center bg-white text-[#104C3C] opacity-0 transition-all duration-1000">
+        <img src="https://placehold.co/300x200/104C3C/F3F5F3?text=Plastic+Bottle" class="rounded-lg mb-4">
+        <h4 class="text-xl font-bold">Recyclable</h4>
+        <p class="mb-2">Plastic Bottle</p>
+        <p class="text-sm bg-green-50 p-2 rounded-lg">Tip: Rinse before placing in recycle bin.</p>
+      </div>
+
+      <!-- Scene 4 -->
+      <div id="scene-4" class="absolute inset-0 flex flex-col justify-center items-center bg-[#104C3C] text-white opacity-0 transition-all duration-1000">
+        <h3 class="text-2xl font-bold mb-4">Supports SDG 12 & 13</h3>
+        <p>Responsible Consumption & Climate Action 🌏</p>
+      </div>
+
+      <!-- Scene 5 -->
+      <div id="scene-5" class="absolute inset-0 flex flex-col justify-center items-center bg-[#104C3C] text-white opacity-0 transition-all duration-1000">
+        <h3 class="text-3xl font-extrabold mb-2">EcoScan</h3>
+        <p>Small steps toward a cleaner planet 🌍</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="mt-6 text-gray-600">Scroll here to auto-play the EcoScan demo 🌿</p>
+</section>
+
+<!-- ✅ Script: Play When Visible (No Music) -->
+<script>
+  const scenes = [
+    { id: 'scene-1', duration: 5000 },
+    { id: 'scene-2', duration: 6000 },
+    { id: 'scene-3', duration: 7000 },
+    { id: 'scene-4', duration: 7000 },
+    { id: 'scene-5', duration: 5000 }
+  ];
+
+  let demoPlayed = false;
+
+  // Observe when demo section comes into view
+  const demoSection = document.getElementById('demo');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !demoPlayed) {
+        demoPlayed = true;
+        playScenes();
+      }
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(demoSection);
+
+  // Function to handle scene transitions
+  function playScenes() {
+    let elapsed = 0;
+    scenes.forEach(scene => {
+      setTimeout(() => showScene(scene.id), elapsed);
+      elapsed += scene.duration;
+    });
+  }
+
+  // Show current scene, hide others
+  function showScene(id) {
+    scenes.forEach(s => {
+      const el = document.getElementById(s.id);
+      el.classList.toggle('opacity-100', s.id === id);
+      el.classList.toggle('opacity-0', s.id !== id);
+    });
+  }
+</script>
+
+
+<!-- ✅ Inline Demo Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+<script>
+  const scenes = [
+    { id: 'scene-1', duration: 5000 },
+    { id: 'scene-2', duration: 6000 },
+    { id: 'scene-3', duration: 7000 },
+    { id: 'scene-4', duration: 7000 },
+    { id: 'scene-5', duration: 5000 }
+  ];
+
+  window.addEventListener('load', async () => {
+    await Tone.start();
+    playMusic();
+    playScenes();
+  });
+
+  function playMusic() {
+    const synth = new Tone.PolySynth(Tone.Synth, {
+      oscillator: { type: 'sine' },
+      envelope: { attack: 0.5, decay: 0.1, sustain: 0.3, release: 1 },
+      volume: -20
+    }).toDestination();
+
+    const notes = ['C4', 'E4', 'G4', 'B4', 'C5', 'G4', 'E4'];
+    let i = 0;
+    const loop = new Tone.Loop(t => {
+      synth.triggerAttackRelease(notes[i % notes.length], '8n', t);
+      i++;
+    }, '4n').start(0);
+
+    Tone.Transport.bpm.value = 80;
+    Tone.Transport.start();
+
+    setTimeout(() => { loop.stop(); synth.dispose(); Tone.Transport.stop(); }, 30000);
+  }
+
+  function playScenes() {
+    let elapsed = 0;
+    scenes.forEach(scene => {
+      setTimeout(() => showScene(scene.id), elapsed);
+      elapsed += scene.duration;
+    });
+  }
+
+  function showScene(id) {
+    scenes.forEach(s => {
+      const el = document.getElementById(s.id);
+      el.classList.toggle('opacity-100', s.id === id);
+      el.classList.toggle('opacity-0', s.id !== id);
+    });
+  }
+</script>
+
+
+  <!-- 📩 Contact Section -->
+  <section id="contact" class="py-16 text-center">
+    <h2 data-aos="fade-up" class="text-3xl font-bold text-green-700 mb-4">Get in Touch</h2>
+    <p data-aos="fade-up" data-aos-delay="200" class="text-gray-700 mb-6">Interested in collaborating or learning more about EcoScan?</p>
+    <a href="mailto:team.ecoscan@gmail.com"
+       class="inline-block bg-green-700 text-white px-8 py-3 rounded-lg hover:bg-green-800 transition">Email Us</a>
+  </section>
+
+  <!-- 📦 Footer -->
+  <footer class="bg-gray-900 text-gray-300 text-center py-6">
+    <p>© 2025 EcoScan. Built with 💚 by Team EcoForce.</p>
+    <p class="text-sm mt-2">
+      Connect:
+      <a href="#" class="text-green-400 hover:underline">Instagram</a> |
+      <a href="#" class="text-green-400 hover:underline">GitHub</a>
+    </p>
+  </footer>
+
+  <script>
+    // Initialize AOS animations
+    AOS.init({ duration: 1000, once: true });
+  </script>
+
+</body>
+</html>
