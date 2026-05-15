@@ -16,6 +16,12 @@
   <link rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
+  <!-- TensorFlow -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.7.4/dist/tf.min.js"></script>
+
+  <!-- Teachable Machine -->
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+
   <style>
 
     html{
@@ -24,6 +30,7 @@
 
     body{
       overflow-x:hidden;
+      background:#f9fafb;
     }
 
     .hero-gradient{
@@ -71,7 +78,7 @@
 
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body class="text-gray-800">
 
   <!-- NAVBAR -->
   <header class="fixed top-0 left-0 w-full z-50 bg-[#0c3d31]/95 backdrop-blur-md shadow-lg">
@@ -82,7 +89,6 @@
         Eco<span class="text-green-300">Scan</span>
       </h1>
 
-      <!-- Desktop Menu -->
       <nav class="hidden md:flex gap-8 text-white font-medium">
 
         <a href="#about" class="hover:text-green-300 transition">
@@ -97,25 +103,12 @@
           AI Scan
         </a>
 
-        <a href="#workflow" class="hover:text-green-300 transition">
-          Workflow
-        </a>
-
-        <a href="#stats" class="hover:text-green-300 transition">
-          Stats
-        </a>
-
-        <a href="#team" class="hover:text-green-300 transition">
-          Team
-        </a>
-
         <a href="#contact" class="hover:text-green-300 transition">
           Contact
         </a>
 
       </nav>
 
-      <!-- Mobile Menu Button -->
       <button id="menu-btn"
         class="md:hidden text-white text-2xl">
 
@@ -125,7 +118,6 @@
 
     </div>
 
-    <!-- Mobile Menu -->
     <div id="mobile-menu"
       class="hidden md:hidden flex flex-col bg-[#0c3d31] text-white px-6 pb-6 gap-4">
 
@@ -134,12 +126,6 @@
       <a href="#features">Features</a>
 
       <a href="#scan">AI Scan</a>
-
-      <a href="#workflow">Workflow</a>
-
-      <a href="#stats">Stats</a>
-
-      <a href="#team">Team</a>
 
       <a href="#contact">Contact</a>
 
@@ -215,7 +201,6 @@
           <div
             class="bg-white rounded-[2.5rem] overflow-hidden h-[640px] relative">
 
-            <!-- Scene 1 -->
             <div id="scene-1"
               class="demo-scene absolute inset-0 flex flex-col justify-center items-center bg-[#0c3d31] text-white">
 
@@ -229,7 +214,6 @@
 
             </div>
 
-            <!-- Scene 2 -->
             <div id="scene-2"
               class="demo-scene absolute inset-0 opacity-0 flex flex-col justify-center items-center bg-white text-[#0c3d31]">
 
@@ -250,7 +234,6 @@
 
             </div>
 
-            <!-- Scene 3 -->
             <div id="scene-3"
               class="demo-scene absolute inset-0 opacity-0 flex flex-col justify-center items-center bg-[#f2fff8] text-[#0c3d31]">
 
@@ -273,7 +256,6 @@
 
             </div>
 
-            <!-- Scene 4 -->
             <div id="scene-4"
               class="demo-scene absolute inset-0 opacity-0 flex flex-col justify-center items-center bg-[#0c3d31] text-white">
 
@@ -448,7 +430,6 @@
 
       </p>
 
-      <!-- Upload Card -->
       <div
         class="bg-green-50 rounded-3xl shadow-xl p-10 max-w-2xl mx-auto"
         data-aos="zoom-in">
@@ -481,11 +462,12 @@
           type="file"
           id="waste-image"
           accept="image/*"
-          class="hidden">
+          style="display:none;">
 
-        <!-- Upload Button -->
+        <!-- Upload -->
         <button
-          onclick="document.getElementById('waste-image').click()"
+          type="button"
+          id="upload-btn"
           class="bg-green-700 text-white px-8 py-4 rounded-2xl font-bold hover:bg-green-800 transition mb-6">
 
           Choose Image
@@ -503,26 +485,22 @@
 
         </button>
 
-        <!-- Result -->
-        <div
-          id="result-box"
-          class="mt-10 hidden">
+        <!-- RESULT -->
+        <div class="mt-8">
 
-          <h3 class="text-3xl font-black text-green-800 mb-4">
+          <h3
+            id="result-type"
+            class="text-3xl font-black text-green-800 mb-2">
 
-            Analysis Result
+            Waiting for Analysis
 
           </h3>
 
-          <div
-            id="result-type"
-            class="inline-block px-6 py-3 rounded-full text-xl font-bold bg-green-100 text-green-700">
-
-          </div>
-
           <p
-            id="result-tip"
-            class="mt-5 text-gray-700 text-lg">
+            id="result-confidence"
+            class="text-gray-600 text-lg">
+
+            Upload an image to begin
 
           </p>
 
@@ -534,286 +512,164 @@
 
   </section>
 
-  <!-- WORKFLOW -->
-  <section id="workflow"
-    class="py-24 px-6">
+  <!-- CONTACT -->
+  <section id="contact"
+    class="bg-green-50 py-24 px-6 text-center">
 
-    <div class="max-w-6xl mx-auto">
+    <h2
+      class="text-4xl md:text-5xl font-black text-green-800 mb-6">
 
-      <h2
-        class="text-4xl font-black text-center text-green-800 mb-20"
-        data-aos="fade-up">
+      Contact Us
 
-        AI Workflow
+    </h2>
 
-      </h2>
+    <p class="text-gray-600 text-lg mb-8">
 
-      <div class="grid md:grid-cols-4 gap-8 text-center">
+      Together we can build a cleaner and greener future.
 
-        <div data-aos="fade-up">
+    </p>
 
-          <div
-            class="w-24 h-24 mx-auto rounded-full bg-green-700 text-white flex items-center justify-center text-4xl mb-6">
+    <a href="#"
+      class="bg-green-700 text-white px-8 py-4 rounded-2xl font-bold hover:bg-green-800 transition">
 
-            <i class="fa-solid fa-camera"></i>
+      Get Started
 
-          </div>
-
-          <h3 class="font-bold text-xl mb-3">
-            Scan Waste
-          </h3>
-
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="100">
-
-          <div
-            class="w-24 h-24 mx-auto rounded-full bg-green-700 text-white flex items-center justify-center text-4xl mb-6">
-
-            <i class="fa-solid fa-brain"></i>
-
-          </div>
-
-          <h3 class="font-bold text-xl mb-3">
-            AI Analysis
-          </h3>
-
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="200">
-
-          <div
-            class="w-24 h-24 mx-auto rounded-full bg-green-700 text-white flex items-center justify-center text-4xl mb-6">
-
-            <i class="fa-solid fa-trash"></i>
-
-          </div>
-
-          <h3 class="font-bold text-xl mb-3">
-            Waste Classification
-          </h3>
-
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="300">
-
-          <div
-            class="w-24 h-24 mx-auto rounded-full bg-green-700 text-white flex items-center justify-center text-4xl mb-6">
-
-            <i class="fa-solid fa-seedling"></i>
-
-          </div>
-
-          <h3 class="font-bold text-xl mb-3">
-            Eco Action
-          </h3>
-
-        </div>
-
-      </div>
-
-    </div>
+    </a>
 
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-gray-950 text-gray-400 text-center py-8">
+  <footer class="bg-black text-gray-400 text-center py-8">
 
-    <h2 class="text-2xl font-bold text-white mb-3">
-
+    <h2 class="text-white text-2xl font-bold mb-2">
       EcoScan
-
     </h2>
 
     <p>
-
-      Built with 💚 by Team EcoForce
-
+      Smart AI Waste Management Platform
     </p>
 
   </footer>
 
-  <!-- AOS -->
+  <!-- SCRIPT -->
   <script>
 
-    AOS.init({
-      duration:1000,
-      once:true
-    });
+    AOS.init();
 
-  </script>
+    // MOBILE MENU
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-  <!-- Mobile Menu -->
-  <script>
-
-    const menuBtn =
-      document.getElementById("menu-btn");
-
-    const mobileMenu =
-      document.getElementById("mobile-menu");
-
-    menuBtn.addEventListener("click", () => {
+    menuBtn.addEventListener("click",()=>{
 
       mobileMenu.classList.toggle("hidden");
 
     });
 
-  </script>
-
-  <!-- Demo Animation -->
-  <script>
-
+    // PHONE DEMO
     const scenes = [
-      "scene-1",
-      "scene-2",
-      "scene-3",
-      "scene-4"
+      document.getElementById("scene-1"),
+      document.getElementById("scene-2"),
+      document.getElementById("scene-3"),
+      document.getElementById("scene-4")
     ];
 
-    let current = 0;
+    let currentScene = 0;
 
-    function showScene(index){
+    setInterval(()=>{
 
-      scenes.forEach((id,i)=>{
+      scenes[currentScene].style.opacity = "0";
 
-        const el =
-          document.getElementById(id);
+      currentScene = (currentScene + 1) % scenes.length;
 
-        if(i === index){
+      scenes[currentScene].style.opacity = "1";
 
-          el.classList.remove("opacity-0");
+    },3000);
 
-          el.classList.add("opacity-100");
-
-        }
-
-        else{
-
-          el.classList.remove("opacity-100");
-
-          el.classList.add("opacity-0");
-
-        }
-
-      });
-
-    }
-
-    setInterval(() => {
-
-      current++;
-
-      if(current >= scenes.length){
-
-        current = 0;
-
-      }
-
-      showScene(current);
-
-    }, 4000);
-
-  </script>
-
-  <!-- TensorFlow -->
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
-
-  <!-- Teachable Machine -->
-  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest"></script>
-
-  <!-- REAL AI SCRIPT -->
-  <script>
+    // AI MODEL
+    const URL = "./";
 
     let model;
 
-    // Load AI Model
+    const imageInput = document.getElementById("waste-image");
+    const previewImage = document.getElementById("preview-image");
+    const uploadPlaceholder = document.getElementById("upload-placeholder");
+
+    const uploadBtn = document.getElementById("upload-btn");
+    const analyzeBtn = document.getElementById("analyze-btn");
+
+    const resultType = document.getElementById("result-type");
+    const resultConfidence = document.getElementById("result-confidence");
+
     async function loadModel(){
 
-  try{
+      const modelURL = URL + "model.json";
+      const metadataURL = URL + "metadata.json";
 
-    const modelURL = "./model.json";
+      model = await tmImage.load(modelURL, metadataURL);
 
-    const metadataURL = "./metadata.json";
+    }
 
-    model = await tmImage.load(modelURL, metadataURL);
+    uploadBtn.addEventListener("click",()=>{
 
-    console.log("EcoScan AI Model Loaded");
-
-    alert("AI Model Loaded Successfully");
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    alert("AI Model Failed To Load");
-
-  }
-
-}
-
-    // Preview Image
-    wasteInput.addEventListener("change", function(e){
-
-      const file = e.target.files[0];
-
-      if(file){
-
-        const reader = new FileReader();
-
-        reader.onload = function(event){
-
-          previewImage.src = event.target.result;
-
-          previewImage.classList.remove("hidden");
-
-          uploadPlaceholder.classList.add("hidden");
-
-        };
-
-        reader.readAsDataURL(file);
-
-      }
+      imageInput.click();
 
     });
 
-    // Analyze Image
-    analyzeBtn.addEventListener("click", async function(){
+    imageInput.addEventListener("change",(event)=>{
+
+      const file = event.target.files[0];
+
+      if(!file) return;
+
+      const reader = new FileReader();
+
+      reader.onload = function(e){
+
+        previewImage.src = e.target.result;
+
+        previewImage.classList.remove("hidden");
+
+        uploadPlaceholder.style.display = "none";
+
+      };
+
+      reader.readAsDataURL(file);
+
+    });
+
+    analyzeBtn.addEventListener("click", async ()=>{
 
       if(!previewImage.src){
 
         alert("Please upload an image first.");
 
         return;
-
       }
 
-      resultBox.classList.remove("hidden");
-
-      resultType.innerText = "Analyzing...";
-
-      resultTip.innerText =
-      "EcoScan AI is scanning the waste item.";
-
-      // Predict
       try{
 
-        // Predict
-        const prediction =
-          await model.predict(previewImage);
+        if(!model){
 
-        // Sort Highest Prediction
+          await loadModel();
+
+        }
+
+        analyzeBtn.innerText = "Analyzing...";
+
+        const prediction = await model.predict(previewImage);
+
         prediction.sort((a,b)=>b.probability-a.probability);
 
         const topResult = prediction[0];
 
-        const confidence =
-          (topResult.probability * 100).toFixed(1);
-
-        // Result
         resultType.innerText =
-        `${topResult.className} (${confidence}%)`;
+        `${topResult.className}`;
+
+        resultConfidence.innerText =
+        `${(topResult.probability * 100).toFixed(1)}% Confidence`;
+
+        analyzeBtn.innerText = "Analyze Waste";
 
       }
 
@@ -821,39 +677,9 @@
 
         console.error(error);
 
-        resultType.innerText = "Prediction Failed";
+        alert("Error loading AI model. Check file paths.");
 
-        resultTip.innerText =
-        "Check browser console for errors.";
-
-      }
-
-      // Tips
-      if(topResult.className === "Recyclable"){
-
-        resultTip.innerText =
-        "♻️ This item can be recycled. Dispose in recycling bins after cleaning.";
-
-      }
-
-      else if(topResult.className === "Biodegradable"){
-
-        resultTip.innerText =
-        "🌱 This waste can naturally decompose and be composted.";
-
-      }
-
-      else if(topResult.className === "Non-Recyclable"){
-
-        resultTip.innerText =
-        "🚫 Dispose responsibly to reduce environmental pollution.";
-
-      }
-
-      else{
-
-        resultTip.innerText =
-        "EcoScan detected the waste successfully.";
+        analyzeBtn.innerText = "Analyze Waste";
 
       }
 
