@@ -729,39 +729,29 @@
     // Load AI Model
     async function loadModel(){
 
-      const modelURL = "./model/model.json";
+  try{
 
-      const metadataURL = "./model/metadata.json";
+    const modelURL = "./model/model.json";
 
-      model = await tmImage.load(modelURL, metadataURL);
+    const metadataURL = "./model/metadata.json";
 
-      console.log("EcoScan AI Model Loaded");
+    model = await tmImage.load(modelURL, metadataURL);
 
-    }
+    console.log("EcoScan AI Model Loaded");
 
-    loadModel();
+    alert("AI Model Loaded Successfully");
 
-    // Elements
-    const wasteInput =
-      document.getElementById("waste-image");
+  }
 
-    const previewImage =
-      document.getElementById("preview-image");
+  catch(error){
 
-    const uploadPlaceholder =
-      document.getElementById("upload-placeholder");
+    console.error(error);
 
-    const analyzeBtn =
-      document.getElementById("analyze-btn");
+    alert("AI Model Failed To Load");
 
-    const resultBox =
-      document.getElementById("result-box");
+  }
 
-    const resultType =
-      document.getElementById("result-type");
-
-    const resultTip =
-      document.getElementById("result-tip");
+}
 
     // Preview Image
     wasteInput.addEventListener("change", function(e){
