@@ -731,9 +731,9 @@
 
   try{
 
-    const modelURL = "./model/model.json";
+    const modelURL = "./model.json";
 
-    const metadataURL = "./model/metadata.json";
+    const metadataURL = "./metadata.json";
 
     model = await tmImage.load(modelURL, metadataURL);
 
@@ -797,20 +797,36 @@
       "EcoScan AI is scanning the waste item.";
 
       // Predict
-      const prediction =
-        await model.predict(previewImage);
+      try{
 
-      // Sort Highest Prediction
-      prediction.sort((a,b)=>b.probability-a.probability);
+        // Predict
+        const prediction =
+          await model.predict(previewImage);
 
-      const topResult = prediction[0];
+        // Sort Highest Prediction
+        prediction.sort((a,b)=>b.probability-a.probability);
 
-      const confidence =
-        (topResult.probability * 100).toFixed(1);
+        const topResult = prediction[0];
 
-      // Result
-      resultType.innerText =
-      `${topResult.className} (${confidence}%)`;
+        const confidence =
+          (topResult.probability * 100).toFixed(1);
+
+        // Result
+        resultType.innerText =
+        `${topResult.className} (${confidence}%)`;
+
+      }
+
+      catch(error){
+
+        console.error(error);
+
+        resultType.innerText = "Prediction Failed";
+
+        resultTip.innerText =
+        "Check browser console for errors.";
+
+      }
 
       // Tips
       if(topResult.className === "Recyclable"){
